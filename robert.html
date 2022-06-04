@@ -1,0 +1,1064 @@
+<!-- From Spykid to his lazy programmer  friend Robert-->
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Robert Mudzonga</title> 
+ </head> 
+ <body>
+ <style type="text/css">
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  background-color: lightgrey;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+p {
+  color: black;
+  font-size: 1.4rem;
+  margin-top: 5px;
+  line-height: 2.5rem;
+  font-weight: 300;
+  letter-spacing: .05rem;
+}
+.section-title {
+  font-size: 4rem;
+  font-weight: 300;
+  color: black;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  text-align: center;
+}
+.section-title span {
+  color: green;
+}
+
+.cta {
+  display: inline-block;
+  padding: 10px 30px;
+  color: lime;
+  background-color: transparent;
+  border: 2px solid lime;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  margin-top: 30px;
+  transition: .3s ease;
+  transition-property: background-color, color;
+}
+.cta:hover {
+  color: black;
+  background-color: lime;
+}
+.brand h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: white;
+}
+.brand h1 span {
+  color: lime;
+}
+
+/* Header section */
+#header {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: auto;
+}
+#header .header {
+  min-height: 8vh;
+  background-color: rgba(31, 30, 30, 0.24);
+  transition: .3s ease background-color;
+}
+#header .nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1300px;
+  padding: 0 10px;
+}
+#header .nav-list ul {
+  list-style: none;
+  position: absolute;
+  background-color: rgb(31, 30, 30);
+  width: 100vw;
+  height: 100vh;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: .5s ease left;
+}
+#header .nav-list ul.active {
+  left: 0%;
+}
+#header .nav-list ul a {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: .2rem;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+}
+#header .nav-list ul a::after {
+  content: attr(data-after);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: rgba(240, 248, 255, 0.021);
+  font-size: 13rem;
+  letter-spacing: 50px;
+  z-index: -1;
+  transition: .3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+  transform: translate(-50%, -50%) scale(1);
+  letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+  color: lime;
+}
+#header .hamburger {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  transform: scale(.8);
+  margin-right: 20px;
+}
+#header .hamburger:after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid white;
+  animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+  height: 2px;
+  width: 30px;
+  position: relative;
+  background-color: white;
+  z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: white;
+  transition: .3s ease;
+  transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+  top: 8px;
+}
+#header .hamburger .bar::before {
+  bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+  bottom: 0;
+}
+#header .hamburger.active .bar::after {
+  top: 0;
+}
+/* End Header section */
+
+/* Hero Section */
+#hero {
+  background-image: url(./img/hero-bg.png);
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+  z-index: 1;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: .7;
+  z-index: -1;
+}
+#hero .hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px;
+  justify-content: flex-start;
+}
+#hero h1 {
+  display: block;
+  width: fit-content;
+  font-size: 4rem;
+  position: relative;
+  color: transparent;
+  animation: text_reveal .5s ease forwards;
+  animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+  animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+  animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+  animation: text_reveal_name .5s ease forwards;
+  animation-delay: 3s;
+}
+#hero h1 span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: lime;
+  animation: text_reveal_box 1s ease;
+  animation-delay: .5s;
+}
+#hero h1:nth-child(1) span {
+  animation-delay: .5s;
+}
+#hero h1:nth-child(2) span {
+  animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+  animation-delay: 2.5s;
+}
+
+/* End Hero Section */
+
+/* Services Section */
+#services .services {
+  flex-direction: column;
+  text-align: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+#services .service-top {
+  max-width: 500px;
+  margin: 0 auto;
+}
+#services .service-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+#services .service-item {
+  flex-basis: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url(./img/img-1.png);
+  background-size: cover;
+  margin: 10px 5%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#services .service-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  opacity: .9;
+  z-index: -1;
+}
+#services .service-bottom .icon {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 20px;
+}
+#services .service-item h2 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+#services .service-item p {
+  color: white;
+  text-align: left;
+}
+/* End Services Section */
+
+/* Projects section */
+#projects .projects {
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+#projects .projects-header h1 {
+  margin-bottom: 50px;
+}
+#projects .all-projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#projects .project-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+#projects .project-info {
+  padding: 30px;
+  flex-basis: 50%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  color: white;
+}
+#projects .project-info h1 {
+  font-size: 4rem;
+  font-weight: 500;
+}
+#projects .project-info h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+#projects .project-info p {
+  color: white;
+}
+#projects .project-img {
+  flex-basis: 50%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+#projects .project-img:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  opacity: .7;
+}
+#projects .project-img img {
+  transition: .3s ease transform;
+}
+#projects .project-item:hover .project-img img {
+  transform: scale(1.1);
+}
+/* End Projects section */
+
+/* About Section */
+#about .about {
+  flex-direction: column-reverse;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+#about .col-left {
+  width: 250px;
+  height: 360px;
+}
+#about .col-right {
+  width: 100%;
+}
+#about .col-right h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: .2rem;
+  margin-bottom: 10px;
+}
+#about .col-right p {
+  margin-bottom: 20px;
+}
+#about .col-right .cta {
+  color: black;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  font-size: 2rem;
+}
+#about .col-left .about-img {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 10px solid white;
+}
+#about .col-left .about-img::after {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: 19px;
+  height: 98%;
+  width: 98%;
+  border: 7px solid lime;
+  z-index: -1;
+}
+/* End About Section */
+
+/* contact Section */
+#contact .contact {
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#contact .contact-items {
+  width: 400px;
+}
+#contact .contact-item {
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 18px 0 #0000002c;
+  transition: .3s ease box-shadow;
+}
+#contact .contact-item:hover {
+  box-shadow: 0px 0px 5px 0 #0000002c;
+}
+#contact .icon {
+  width: 70px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+#contact .contact-info h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+#contact .contact-info h2 {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+/*End contact Section */
+
+/* Footer */
+#footer {
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer {
+  min-height: 200px;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+#footer h2 {
+  color: white;
+  font-weight: 500;
+  font-size: 1.8rem;
+  letter-spacing: .1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#footer .social-icon {
+  display: flex;
+  margin-bottom: 30px;
+}
+#footer .social-item {
+  height: 50px;
+  width: 50px;
+  margin: 0 5px;
+}
+#footer .social-item img {
+  filter: grayscale(1);
+  transition: .3s ease filter;
+}
+#footer .social-item:hover img {
+  filter: grayscale(0);
+}
+#footer p {
+  color: white;
+  font-size: 1.3rem;
+}
+/* End Footer */
+
+/* Keyframes */
+@keyframes hamburger_puls {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+@keyframes text_reveal_box {
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+@keyframes text_reveal {
+  100% {
+    color: white;
+  }
+}
+@keyframes text_reveal_name {
+  100% {
+    color: lime;
+    font-weight: 500;
+  }
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+  .cta {
+    font-size: 2.5rem;
+    padding: 20px 60px;
+  }
+  h1.section-title {
+    font-size: 6rem;
+  }
+
+  /* Hero */
+  #hero h1 {
+    font-size: 7rem;
+  }
+  /* End Hero */
+
+  /* Services Section */
+  #services .service-bottom .service-item {
+    flex-basis: 45%;
+    margin: 2.5%;
+  }
+  /* End Services Section */
+
+  /* Project */
+  #projects .project-item {
+    flex-direction: row;
+  }
+  #projects .project-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  #projects .project-item {
+    height: 400px;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+  #projects .all-projects .project-info {
+    height: 100%;
+  }
+  #projects .all-projects .project-img {
+    height: 100%;
+  }
+  /* End Project */
+
+  /* About */
+  #about .about {
+    flex-direction: row;
+  }
+  #about .col-left {
+    width: 600px;
+    height: 400px;
+    padding-left: 60px;
+  }
+  #about .about .col-left .about-img::after {
+    left: -45px;
+    top: 34px;
+    height: 98%;
+    width: 98%;
+    border: 10px solid lime;
+  }
+  #about .col-right {
+    text-align: left;
+    padding: 30px;
+  }
+  #about .col-right h1 {
+    text-align: left;
+  }
+  /* End About */
+
+  /* contact  */
+  #contact .contact {
+    flex-direction: column;
+    padding: 100px 0;
+    align-items: center;
+    justify-content: center;
+    min-width: 20vh;
+  }
+  #contact .contact-items {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+  }
+  #contact .contact-item {
+    width: 30%;
+    margin: 0;
+    flex-direction: row;
+  }
+  #contact .contact-item .icon {
+    height: 100px;
+    width: 100px;
+  }
+  #contact .contact-item .icon img {
+    object-fit: contain;
+  }
+  #contact .contact-item .contact-info {
+    width: 100%;
+    text-align: left;
+    padding-left: 20px;
+  }
+  /* End contact  */
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+  /* header */
+  #header .hamburger {
+    display: none;
+  }
+  #header .nav-list ul {
+    position: initial;
+    display: block;
+    height: auto;
+    width: fit-content;
+    background-color: transparent;
+  }
+  #header .nav-list ul li {
+    display: inline-block;
+  }
+  #header .nav-list ul li a {
+    font-size: 1.8rem;
+  }
+  #header .nav-list ul a:after {
+    display: none;
+  }
+  /* End header */
+
+  #services .service-bottom .service-item {
+    flex-basis: 22%;
+    margin: 1.5%;
+  }
+}
+.virt{
+    color: lime;
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+      .card {
+         box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.22);
+         width: 250px;
+         box-sizing: border-box;
+         transition-duration:0s;
+         border-top-left-radius: 10px;
+         border-top-right-radius: 20px;
+         border-bottom-right-radius: 30px;
+         border-bottom-left-radius: 40px;
+         color: lime;
+         background: transparent;
+      }
+      .card > img {
+         display: block;
+         max-width: 100%;
+         height: auto;
+         margin: 0px;
+      }
+      .card > p {
+         font-family: sans-serif;
+         padding: 0px 10px 10px 10px;
+         text-align: center;
+      }
+      .card:hover {
+         box-shadow: 0 18px 36px rgba(0,0,0,0.30), 0 14px 11px rgba(0,0,0,0.22);
+         width: 300px;
+      }
+      .nn{
+          color: black;
+      }
+      .lightbox {
+         display: table; /* helps us center the lightbox-content */
+         /* make the lightbox occupy the entire page */
+         position: fixed;
+         top: -100%; /* position the lightbox above the top edge */
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.7); /* black with 0.7 opacity */
+         transition-duration: 2s; /* set the duration of the slide down effect */
+      }
+      .lightbox:target {
+         top: 0; /* cover the entire screen */
+      }
+      .lightbox-content {
+         display: table-cell;
+         vertical-align: middle; /* vertically center */
+         text-align: center; /* horizontally center */
+      }
+      .close {
+         /* position the CLOSE button to the top-right corner */
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         
+         /* style the close button */
+         font-size: 20px;
+         font-weight: 300;
+         text-decoration: none;
+         color: white;
+      }
+      
+      /* make the image responsive */
+      img {
+         
+         height: auto;
+         max-width: 100%;
+      }
+
+/* End  Media Query For Desktop */
+ </style>
+  <!-- Header --> 
+  <section id="header"> 
+   <div class="header container"> 
+    <div class="nav-bar"> 
+     <div class="brand"> 
+      <a href="#hero"><h1><span>®</span>obert <span>Σ</span>udzongα</h1></a>
+     </div> 
+     <div class="nav-list"> 
+      <div class="hamburger"> 
+       <div class="bar"></div> 
+      </div> 
+      <ul> 
+       <li><a href="#hero" data-after="Home">Home</a></li> 
+       <li><a href="#services" data-after="Service">Arco-Tech</a></li> 
+       <li><a href="#projects" data-after="Projects">Projects</a></li> 
+       <li><a href="#about" data-after="About">About</a></li> 
+       <li><a href="#contact" data-after="Contact">Contact</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+  <!-- End Header --> 
+  <!-- Hero Section  --> 
+  <section id="hero"> 
+   <div class="hero container"> 
+    <div> 
+     <h1>Hello, <span></span></h1> 
+     <h1>My Name is <span></span></h1>
+     <h1>Robert T Mudzonga<span></span></h1> 
+     <a href="#projects" type="button" class="cta">Portfolio</a> 
+    </div> 
+   </div> 
+  </section> 
+  <!-- End Hero Section  --> 
+  <!-- Service Section --> 
+  <section id="services"> 
+   <div class="services container"> 
+    <div class="service-top"> 
+     <h1 class="section-title">Arco<span>-</span>íris</h1> 
+     <p>At Arco-ìris we offer a lot of services from Cyber Security to software development
+	 and we aim on improving Tech in Africa the motto of the company is
+	 <b><i>The African spectrum of Technology</i></b>
+	 and we are going to employ a lot of people in Africa which is going to change Africa Forever.
+	 We aim on improving the world with Tech because the second thing to embrace the economy besides
+	 Finance is Technology so we are going to take the good side of Tech and change the World , some of the services we offer are down below</p> 
+    </div> 
+    <div class="service-bottom"> 
+     <div class="service-item"> 
+      <div class="icon"> 
+        <img src="https://media.istockphoto.com/photos/code-picture-id182465097">
+      </div> 
+      <h2>Software Development</h2> 
+      <p>We create and design Mobile Applications at Acro-Tech and these applications are used for diffrent purposes,
+	  for data managment we have StreamLit and MatplotLib to plot graphs , Kivy for simple mobile applications,
+	  Android Studio for Java to create applications for android and Objective-C for iOS applications</p> 
+     </div> 
+     <div class="service-item"> 
+      <div class="icon"> 
+        <img src="machine.jpg">
+      </div> 
+      <h2>Machine Learning</h2> 
+      <p>Python, Java, C, Ruby to name a few are some of the languages used at Acro-Tech to create machine Learning applications.
+	  We use a lot of Frameworks to support machine learning eg. Streamlit is one of our most used machine learning framework at SpyTech</p> 
+     </div> 
+     <div class="service-item"> 
+      <div class="icon"> 
+        <img src="https://media.istockphoto.com/photos/computer-programmer-working-on-new-software-program-picture-id1212006391?k=20&m=1212006391&s=612x612&w=0&h=5UBaO9Ov9tF3Yxe6fRjlsVMbosYe1pb0dOPSgbvvgSw=">
+      </div> 
+      <h2>Artificial Intelligence</h2> 
+      <p>GUI , UIX and UI is what we mainly focus on at Arco-Tech . We create ChatBots
+	  for your company's website and applications . All of the features of the Bots are suggested by the client</p> 
+     </div> 
+     <div class="service-item"> 
+      <div class="icon"> 
+        <img src="https://media.istockphoto.com/photos/keeping-up-with-modern-advancements-picture-id1081869336?k=20&m=1081869336&s=612x612&w=0&h=0fUoqQ-eRFZXWuvJ3GIVrbmYHAzKEIg6pcu2fhbXQCw=">
+      </div> 
+      <h2>Web Development and Design</h2> 
+      <p>Graphic Design, Frontend Development and Backend development is all done by Robert Mudzonga
+	  I create your web applications and websites from scratch till they are Launched</p> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+  <!-- End Service Section --> 
+  <!-- Projects Section --> 
+  <section id="projects"> 
+   <div class="projects container"> 
+    <div class="projects-header"> 
+     <h1 class="section-title">Robert's <span>Projects</span></h1> 
+    </div> 
+    <div class="all-projects"> 
+     <div class="project-item"> 
+      <div class="project-info"> 
+       <h1>Project 1</h1> 
+       <h2>Arco-ìris</h2> 
+       <p><i><b>Arco-ìris</b></i> Technology is a small technology startup in Zimbabwe that is going to start
+	   working in August 2022. Its main aim is to push Zimbabwe and Africa to compete with other continents in
+	   the Technology and to start a Technology revolution in Zimbabwe.
+	   We will be specializing in all aspects of tech ranging from cyber security to app development.</p> 
+      </div> 
+     </div> 
+     <div class="project-item"> 
+      <div class="project-info"> 
+       <h1>Project 2</h1> 
+       <h2>Arco-Fusion</h2> 
+       <p><i><b>Arco-Fusion</b></i> book gallery is an online book publishing firm founded by Robert Mudzonga
+	   and The Fusion entertainment its main aim is to save a safe heaven for all upcoming artist and to let
+	   their works get out there... the Arco-Fusion book gallery current have on publication called The diary of lost souls (depression)
+	   this book wás used by ZINASU NUST in their save a life campaign and Robert Mudzonga was the key speaker at the launch</p> 
+      </div> 
+     </div> 
+     <div class="project-item"> 
+      <div class="project-info"> 
+       <h1>Project 3</h1> 
+       <h2>Handeyi</h2> 
+       <p><i><b>Handeyi</b></i> ride share and taxi is an uber like application for easier transport ways
+	   wherever you are whenever the time os you can call or book transport online. This app is going to 
+	   help in many ways even the security of people the cars will be licensed and gurranteed to help you
+	   reach your destination safe and secure</p> 
+      </div> 
+     </div> 
+     <div class="project-item"> 
+      <div class="project-info"> 
+       <h1>Project 4</h1> 
+       <h2>Farming Pattern Analyzer</h2> 
+       <p>This farming Pattern Analyzer os going to change the african farmimg ways for good . they will be nomore pegs , that is when one pattern Analyzer expert is walkimg around pegging one farming region , this pattern analyzer is going to help farmers make they're work easier</p> 
+      </div> 
+     </div> 
+     <div class="project-item"> 
+      <div class="project-info"> 
+       <h1>Project 5</h1> 
+       <h2>The Home Finder</h2> 
+       <p><i><b>The Home Finder</b></i> it's in the name , the hpme finder is a real estate web application
+	    that brings the hustle of house hunting at your finger tips 
+		http://thehf.vercel.app/ </p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+  <!-- End Projects Section --> 
+  <!-- About Section --> 
+  <section id="about"> 
+   <div class="about container"> 
+    <div class="col-left"> 
+    </div> 
+    <div class="card">
+    <div class="col-right"> 
+   <img src="https://s3.amazonaws.com/alx-intranet.hbtn.io/users/photos/000/002/263/thumb/Screenshot_2021-08-02-08-57-32.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20220604%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220604T143820Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=75deae5b30835709f0b915b201afd5af300fec96c070300d7c5675dd92904115">
+     <h1 class="section-title">About <span>Robert</span></h1> 
+     <h2><div class="nn">Software Engineer</div></h2> 
+     <p>Robert Tatenda Mudzonga is a student currently studying software engineering at Alx,
+	 with his knowledge and experiencs robert is now a founder of the Arco-ìris tech company
+	 which is starting to work in August 2022 , he also dabs into poetry and he is the
+	 Co-founder of Arco-Fusion book Gallery with the fusion Arts. He is a member of 
+	 100 thousand poets for change.</p> 
+     </div>
+     </div>
+   </div> 
+<div class="lightbox" id="example">
+      <a href="#" class="close">CLOSE</a>
+      <div class="lightbox-content">
+         <img src="spytech1.png" />
+      </div>
+   </div>
+  </section> 
+  <!-- End About Section --> 
+  <!-- Contact Section --> 
+  <section id="contact"> 
+   <div class="contact container"> 
+    <div> 
+     <h1 class="section-title">Contact <span>info</span></h1> 
+    </div> 
+    <div class="contact-items"> 
+     <div class="contact-item"> 
+      <div class="icon"> 
+        
+      </div> 
+      <div class="contact-info"> 
+       <h1>Phone</h1> 
+       <h2>+263 788 358 970</h2> 
+       <h2>+263 736 767 619</h2> 
+      </div> 
+     </div> 
+     <div class="contact-item"> 
+      <div class="icon"> 
+        
+      </div> 
+      <div class="contact-info"> 
+       <h1>Email</h1> 
+       <h2>robertmudzonga@yahoo.com</h2> 
+       <h2>rmudzonga64@gmail.com</h2> 
+      </div> 
+	  
+     </div> 
+	 
+     <div class="contact-item"> 
+      <div class="icon"> 
+        
+      </div> 
+      <div class="contact-info"> 
+       <h1>Links</h1> 
+	   <h2><a href="https://github.com/RobertMudzonga">Check out my github</a></h2>
+	   <h2><a href="https://twitter.com/robertmudzonga">Follow me on twitter</a></h2>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+  <!-- End Contact Section --> 
+  <!-- Footer --> 
+  <section id="footer"> 
+   <div class="footer container"> 
+    <div class="brand"> 
+     <h1><span>R</span>obert <span>M</span>udzonga</h1> 
+    </div> 
+    <h2>All about Tech</h2> 
+    <div class="social-icon"> 
+     <div class="social-item"> 
+      <a href="#"><img src="https://scontent.fhre1-1.fna.fbcdn.net/v/t39.30808-6/269668280_110898901489124_470196603462153108_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vMuoy9bnDZMAX9WaMiw&_nc_ht=scontent.fhre1-1.fna&oh=00_AT_UiJI9C1t6Ec3jFtR6xuZPXuEHYskPW_dOgdxVgfVy9w&oe=629FCDFD"></a> 
+      <div class="virt"><h3>Arco-íris</h3></div>
+     </div> 
+     <div class="social-item"> 
+      <a href="#"><img src="https://scontent.fhre1-1.fna.fbcdn.net/v/t39.30808-6/272089754_110899554822392_5894986698609552567_n.jpg?stp=dst-jpg_p180x540&_nc_cat=106&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HSGhna-dgAQAX_NeIHL&_nc_ht=scontent.fhre1-1.fna&oh=00_AT_mUbFGrSFTo_H_AiYinpWrBOe-MQYtzN5Ikjtc-ZxfqQ&oe=62A12255"></a>
+      <div class="virt"><h3>Arco-Fusion</h3></div>
+     </div> 
+     <div class="social-item"> 
+      <a href="#"><img src="depr.jpg"></a> 
+      <div class="virt"><h3>Fusion Arts</h3></div>
+     </div> 
+     <div class="social-item"> 
+     <a href="#"><img src="https://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png"></a>
+     <div class="virt"><h3>Alx Projects</h3></div>
+     </div> 
+    </div> 
+    <p>Copyright © 2022 Robert Mudzonga™ © All rights reserved</p> 
+   </div> 
+  </section> 
+  <!-- End Footer --> 
+ </body>
+ <script type="text/javascript">
+const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
+const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
+const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
+const header = document.querySelector('.header.container');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobile_menu.classList.toggle('active');
+});
+
+document.addEventListener('scroll', () => {
+  var scroll_position = window.scrollY;
+  if (scroll_position > 250) {
+    header.style.backgroundColor = '#29323c';
+  } else {
+    header.style.backgroundColor = 'transparent';
+  }
+});
+
+menu_item.forEach((item) => {
+  item.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobile_menu.classList.toggle('active');
+  });
+});
+let robert_data = {
+    "name" : "Robert Tatenda Mudzonga",
+    "age" : 19,
+    "proffession" : "Software Engineer",
+    "company" : "Acro-íris"
+};
+console.log(robert_data)
+ </script>
+</html>
